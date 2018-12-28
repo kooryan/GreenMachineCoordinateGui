@@ -52,11 +52,6 @@ public class Controller {
     @FXML
     public void initialize() {
 
-//        xAxis.setForceZeroInRange(false);
-//        xAxis.setAutoRanging(false);
-//        xAxis.setTickLabelsVisible(true);
-//        xAxis.setTickMarkVisible(true);
-//        xAxis.setMinorTickVisible(true);
         // Create a LineChart
         coordinate.setAnimated(true);
         coordinate.setTitle("Live Robot Coordinates");
@@ -85,7 +80,7 @@ public class Controller {
     }
 
     public void addDataToSeries() {
-        for (int i = 0; i < 20; i++) { //-- add robot coords to Map/arraylist, get the size of Map or arraylist
+        for (int i = 0; i < 1; i++) { //-- add robot coords to Map/arraylist, get the size of Map or arraylist
             if (pointY.isEmpty())
                 break;
             series.getData().add(new XYChart.Data<>(pointX.remove(), pointY.remove()));
@@ -110,38 +105,15 @@ public class Controller {
 
             try {
 
-//                Scanner lineX = new Scanner(new File("src/sample/pathX.txt"));
-//                Scanner lineY = new Scanner(new File("src/sample/pathY.txt"));
-//
-//                ArrayList<Double> listX = new ArrayList<>();
-//                while (lineX.hasNext()) {
-//                    listX.add(Double.parseDouble(lineX.next()));
-//                }
-//                ArrayList<Double> listY = new ArrayList<>();
-//                while (lineY.hasNext()) {
-//                    listY.add(Double.parseDouble(lineY.next()));
-//                }
-//
-//                System.out.println(pathX);
-//                System.out.println(pathY);
-//
-//
-//                // add a item of random data to queue
-//
-//                for (int i=0; i<listX.size();i++) {
-//                    pointY.add(listY.get(i)); // add robot coordinates here only y-values being updated here??
-//                    pointX.add(listX.get(i)); // robot coordinates x-values updating
-//                }
-
                 int randomX = (int) (Math.random() * 10);
                 int randomY = (int) (Math.random() * 10);
-
+                System.out.println(randomX + ", " + randomY);
                 pointX.add(randomX);
                 pointY.add(randomY);
 
 
                 Thread.sleep(1000);
-                executor.execute(this);
+                executor.execute(this::run);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
